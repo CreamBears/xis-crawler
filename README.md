@@ -13,5 +13,7 @@ $ echo [password] >> mysql.conf
 $ mysql -h [host] -u [user] -p < mysql/init.sql
 $ sbt
 ...
-sbt:xis-crawler> run
+sbt:xis-crawler> run -c
+...
+sbt:xis-crawler> run -r [num]
 ```

@@ -10,5 +10,6 @@ lazy val root = (project in file("."))
     )),
     name := "xis-crawler",
     libraryDependencies += scalaTest % Test,
-    libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.12" 
+    libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.12",
+    libraryDependencies += "joda-time" % "joda-time" % "2.10"
   )

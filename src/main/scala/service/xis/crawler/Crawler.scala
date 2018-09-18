@@ -15,7 +15,7 @@ object Crawler {
     "academic_courses", "recruiting", "gsc_usc_notice", "student_club", 
     "researcher_on_military_duty", "classified")
 
-  def main(args: Array[String]) = getConnection.foreach(conn => {
+  def run: Unit = getConnection.foreach(conn => {
      implicit val cookies: Cookie = MMap()
      login
 
@@ -45,6 +45,7 @@ object Crawler {
       stmt.setInt(7, h)
       stmt.setString(8, c.filter(_ <= 0xd800))
       stmt.executeUpdate()
+      stmt.close()
 
       (f zip l).foreach{ case (n, l) => {
         val stmt = conn.prepareStatement(
@@ -54,6 +55,7 @@ object Crawler {
         stmt.setString(2, n)
         stmt.setString(3, l)
         stmt.executeUpdate()
+        stmt.close()
       }}
 
       im.foreach(l => {
@@ -63,6 +65,7 @@ object Crawler {
         stmt.setString(1, i)
         stmt.setString(2, l)
         stmt.executeUpdate()
+        stmt.close()
       })
   }
 }
